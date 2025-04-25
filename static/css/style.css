@@ -1,0 +1,40 @@
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+}
+nav a{
+    align-self: center;
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav a:hover{
+    text-decoration: underline;
+    background-color: #FF8C00;
+    border-radius: 10px;
+}
+
+body{
+    font-family: "Jura", sans-serif;
+    color: #333333;
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.header{
+    margin: 2rem;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #f5f5dce8;
+}
+
+.content{
+    margin: 2rem;
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: #f5f5dce8;
+}
