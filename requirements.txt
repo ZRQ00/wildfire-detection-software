@@ -1,1 +1,5 @@
 Flask
+follium
+pandas
+shapely
+geopandas
