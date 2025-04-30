@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <title>Wildfire Risk Checker</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   {% include 'header.html' %}
   <div class="content">
-    Add drop down for states. Need to add a map of US.
+    <form method="POST" action="/get-map" class="form">
+      <label for="state">Choose a state:</label>
+      <select id="state" name="state">
+        {% for state in states %}
+        <option value="{{ state }}" {% if selected_state==state %}selected{% endif %}>{{ state }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Generate Map">
+    </form>
   </div>
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+
 </html>

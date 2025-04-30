@@ -22,6 +22,7 @@ body{
     background-image: url("../img/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    font-size: 1.1rem;
 }
 
 .header{
@@ -37,4 +38,36 @@ body{
     border-radius: 20px;
     padding: 1rem;
     background-color: #f5f5dce8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form{
+    display:flex;
+    flex-direction: column;
+    margin: 2rem;
+    align-self: center;
+}
+
+.form > *{
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.results{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+input[type=submit] {
+    border-radius: 20px;
+    border: None;
+    background-color: #FF8C00;
+}
+
+input[type=submit]:hover{
+    background-color: #ffa12f;
+    cursor: pointer;
 }
