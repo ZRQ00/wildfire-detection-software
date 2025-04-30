@@ -17,7 +17,7 @@ def add_state_info(df):
     geometry = [Point(xy) for xy in zip(df["LONGDD83"], df["LATDD83"])]
     geo_df = gpd.GeoDataFrame(df, geometry=geometry, crs="EPSG:4326")
 
-    # Load US states GeoJSON (you can cache this locally too)
+    # Load US states GeoJSON
     states = gpd.read_file("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json")
 
     # Spatial join to get state info
@@ -34,10 +34,11 @@ wildfire_data = pd.read_csv(file_path)
 
 # Add state data for each point
 wildfire_with_states = add_state_info(wildfire_data)
+print(wildfire_with_states)
 wildfire_us = wildfire_with_states.copy()
 
 # Get list of states for frontend
-states_list = sorted(wildfire_with_states["state"].dropna().astype(str).unique().tolist())
+states_list = sorted(wildfire_with_states["state"].dropna().unique().tolist())
 
 # Encoding mapping
 cause_mapping = {
@@ -181,6 +182,7 @@ def generate_cluster_map(state_data):
     cluster_color_map = {
         label: cluster_colors[i % len(cluster_colors)] for i, label in enumerate(cluster_labels)
     }
+    print(state_data)
     # Create base map
     folium_map = folium.Map(
         location=[state_data["LATDD83"].mean(), state_data["LONGDD83"].mean()],
@@ -207,4 +209,4 @@ def generate_cluster_map(state_data):
     return "cluster_map.html"
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
