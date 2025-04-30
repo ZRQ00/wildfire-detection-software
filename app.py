@@ -209,4 +209,4 @@ def generate_cluster_map(state_data):
     return "cluster_map.html"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
