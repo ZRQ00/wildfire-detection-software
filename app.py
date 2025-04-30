@@ -37,7 +37,7 @@ wildfire_with_states = add_state_info(wildfire_data)
 wildfire_us = wildfire_with_states.copy()
 
 # Get list of states for frontend
-states_list = sorted(wildfire_with_states["state"].unique().tolist())
+states_list = sorted(wildfire_with_states["state"].dropna().astype(str).unique().tolist())
 
 # Encoding mapping
 cause_mapping = {
@@ -161,6 +161,8 @@ def getRisk():
         
         cluster_counts_raw = state_data['cluster'].value_counts().sort_index()
         cluster_counts = {k : int(v) for k, v in cluster_counts_raw.items()}
+        
+        generate_cluster_map(state_data)
 
     return render_template(
         "risk.html",
@@ -169,7 +171,7 @@ def getRisk():
         cluster_counts=cluster_counts
     )
 
-# Function was used to generate a cluster map once for k-means
+# Function was used to generate a cluster map
 def generate_cluster_map(state_data):
     cluster_colors = [
         '#ff6384', '#36a2eb', '#ffce56', '#4bc0c0',
