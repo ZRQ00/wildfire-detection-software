@@ -1,1 +1,6 @@
 Flask
+gunicorn
+joblib
+geopandas
+shapely
+folium
